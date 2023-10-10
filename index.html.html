@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reprodução de Áudio com Animação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .audio-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .custom-image {
+      width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+      margin-left: 10px; /* Ajuste a margem conforme necessário */
+      vertical-align: middle; /* Ajuste para alinhar verticalmente com o controle de áudio */
+    }
+
+    /* Estilizando o controle de áudio */
+    audio {
+      width: 100%;
+    }
+
+    /* Alterando a cor do controle de áudio */
+    audio::-webkit-media-controls-panel {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    /* Alterando a cor do botão de reprodução */
+    audio::-webkit-media-controls-play-button {
+      color: #ff0000; /* Cor vermelha */
+    }
+
+    /* Adicionando animação à reprodução do áudio */
+    .audio-playing {
+      animation: pulse 0.3s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        background-color: #f0f0f0;
+      }
+      to {
+        background-color: #e0e0e0;
+      }
+      * {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: #a9a9a9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.music {
+    width: 90%;
+    max-width: 900px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgb(0,0,0, 0.2);
+    background-color: #fff;
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    /* margin-top: 20px; */
+    position: relative;
+}
+
+.track::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0px 10px 10px 0;
+    border-color: transparent #fff transparent transparent;
+    top: 0;
+    left: -10px;
+}
+
+.track .controls {
+    width: 20px;
+}
+
+.track .controls {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.track .controls button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;    
+}
+
+.track .controls button svg {
+    display: none;
+    pointer-events: none;
+}
+
+.track .controls button[data-state="play"] svg.pause {
+    display: block;
+}
+
+.track .controls button[data-state="pause"] svg.play {
+    display: block;
+}
+
+.track .controls svg {
+    fill: #a9a9a9;
+}
+
+.track .timeline {
+    flex: 1;
+    width: 100%;
+}
+
+.track .icon {
+    position: relative; 
+    margin-left: 10px;   
+}
+
+.track .icon svg {
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.track .avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+} 
+
+#waveform ::part(cursor) {
+    background-color: var(--progress-color, #be358a);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+    }
+  </style>
+</head>
+<body>
+
+<div class="audio-container">
+  <audio id="audio" src="https://cyborgg.space/wp-content/uploads/2023/10/ElevenLabs_2023-10-04T04_40_34_lizzy-refined-victorian_gen_s50_sb75_se0_b_m2.mp3" controls controlsList="nodownload"></audio>
+
+ 
+  </audio>
+  <img src="https://cyborgg.space/wp-content/uploads/2023/10/Design-sem-nome-10-1.png" alt="Imagem" class="custom-image">
+</div>
+
+<script>
+  const audio = document.getElementById('audio');
+
+  audio.addEventListener('play', () => {
+    document.querySelector('.audio-container').classList.add('audio-playing');
+  });
+
+  audio.addEventListener('pause', () => {
+    document.querySelector('.audio-container').classList.remove('audio-playing');
+  });
+</script>
+
+</body>
+</html>
